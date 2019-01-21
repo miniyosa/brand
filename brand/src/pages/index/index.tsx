@@ -85,7 +85,18 @@ class Index extends Component {
       //   <View><Text>Hello, World</Text></View>
       // </View>
       <View className='app-contrast'>
-        <View className='title'>车型对比</View>
+        <View className='app-contrast_header'>
+          {/* <Text>车型对比</Text> */}
+          <View className='features'>
+            隐藏功能
+          </View>
+          <View>
+            <Text>凯路威 2018款2.0TSI 四驱舒适版 7座</Text>
+            <Text>36.38万</Text>
+            <Text>图标</Text>
+            <View>移动</View>
+          </View>
+        </View>
       </View>
     )
   }
