@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "jshint": "^2.9.7",
     "redux-saga": "^1.0.0"
   }
 }
