@@ -1,9 +1,9 @@
 import { ComponentClass } from 'react'
 import Taro, { Component, Config } from '@tarojs/taro'
-import { View, Button, Text } from '@tarojs/components'
-import { connect } from '@tarojs/redux'
+import { View, Icon, Text } from '@tarojs/components'
+// import { connect } from '@tarojs/redux'
 
-import { add, minus, asyncAdd } from '../../actions/counter'
+// import { add, minus, asyncAdd } from '../../actions/counter'
 
 import './index.less'
 
@@ -17,65 +17,88 @@ import './index.less'
 //
 // #endregion
 
-type PageStateProps = {
-  counter: {
-    num: number
-  }
+// type PageStateProps = {
+//   counter: {
+//     num: number
+//   }
+// }
+
+// type PageDispatchProps = {
+//   add: () => void
+//   dec: () => void
+//   asyncAdd: () => any
+//   // handleAdd: () => any
+// }
+
+// type PageOwnProps = {}
+
+// type PageState = {}
+
+// type IProps = PageStateProps & PageDispatchProps & PageOwnProps
+
+// interface Index {
+//   props: IProps;
+//   // handleAdd: () => {};
+// }
+
+interface HomeProps {
+
 }
 
-type PageDispatchProps = {
-  add: () => void
-  dec: () => void
-  asyncAdd: () => any
+interface HomeState {
+  data: any[]
 }
+// @connect(({ counter }) => ({
+//   counter
+// }), (dispatch) => ({
+//   add() {
+//     dispatch(add())
+//   },
+//   dec() {
+//     dispatch(minus())
+//   },
+//   asyncAdd() {
+//     dispatch(asyncAdd())
+//   }
+// }))
+export default class Index extends Taro.Component<HomeProps, HomeState> {
 
-type PageOwnProps = {}
-
-type PageState = {}
-
-type IProps = PageStateProps & PageDispatchProps & PageOwnProps
-
-interface Index {
-  props: IProps;
-}
-
-@connect(({ counter }) => ({
-  counter
-}), (dispatch) => ({
-  add () {
-    dispatch(add())
-  },
-  dec () {
-    dispatch(minus())
-  },
-  asyncAdd () {
-    dispatch(asyncAdd())
-  }
-}))
-class Index extends Component {
-
-    /**
-   * 指定config的类型声明为: Taro.Config
-   *
-   * 由于 typescript 对于 object 类型推导只能推出 Key 的基本类型
-   * 对于像 navigationBarTextStyle: 'black' 这样的推导出的类型是 string
-   * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
-   */
-    config: Config = {
+  /**
+ * 指定config的类型声明为: Taro.Config
+ *
+ * 由于 typescript 对于 object 类型推导只能推出 Key 的基本类型
+ * 对于像 navigationBarTextStyle: 'black' 这样的推导出的类型是 string
+ * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
+ */
+  config: Config = {
     navigationBarTitleText: '首页'
   }
+  constructor(props: HomeProps) {
+    super(props)
+    this.state = {
+      data: [
+        {
+          name: '凯路威',
+          model: '2018款2.0TSI',
+          
+          seats: '七座',
 
-  componentWillReceiveProps (nextProps) {
+        }
+      ]
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
     console.log(this.props, nextProps)
   }
 
-  componentWillUnmount () { }
+  componentWillUnmount() { }
 
-  componentDidShow () { }
+  componentDidShow() { }
 
-  componentDidHide () { }
+  componentDidHide() { }
 
-  render () {
+  render() {
     return (
       // <View className='index'>
       //   <Button className='add_btn' onClick={this.props.add}>+</Button>
@@ -86,19 +109,29 @@ class Index extends Component {
       // </View>
       <View className='app-contrast'>
         <View className='app-contrast_header'>
-          {/* <Text>车型对比</Text> */}
           <View className='features'>
             隐藏功能
           </View>
-          <View>
-            <Text>凯路威 2018款2.0TSI 四驱舒适版 7座</Text>
-            <Text>36.38万</Text>
-            <Text>图标</Text>
-            <View>移动</View>
+          <View className='app-tabs'>
+            <View className='app-tab'>
+              <View className='name'>凯路威 2018款2.0TSI 四驱舒适版 7座</View>
+              <View className='price'>
+                <Text>36.38万</Text>
+                <Icon size='14' type='search' color='#ccc' />
+              </View>
+              <View className='move'>钉在左侧</View>
+            </View>
+            {/* add */}
+            <View className='app-tab' onClick={this.handleAdd}>
+              <View className='add'>+</View>
+            </View>
           </View>
         </View>
       </View>
     )
+  }
+  handleAdd = (): void => {
+    console.log('add')
   }
 }
 
@@ -109,4 +142,4 @@ class Index extends Component {
 //
 // #endregion
 
-export default Index as ComponentClass<PageOwnProps, PageState>
+// export default Index as ComponentClass<HomeProps, PageState>

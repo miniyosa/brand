@@ -1,3 +1,50 @@
 .app-contrast {
     width: 100%;
+    &_header {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        background-color: #eee;
+        padding: 30rpx 0;
+        .features {
+            width: 20%;
+            font-size: 26rpx;
+            text-align: center;
+        }
+        .app-tabs {
+            // width: 80%;
+            display: flex;
+            .app-tab {
+                margin-right: 10rpx;
+                border: 1rpx solid #ccc;
+                width: 200rpx;
+                font-size: 26rpx;
+                display: flex;
+                flex-direction: column;
+                background-color: #fff;
+                .name {
+                    padding: 15rpx;
+                }
+                .price {
+                    border-bottom: 1rpx solid #ccc;
+                    padding-bottom: 10rpx;
+                    color: #ff33cc;
+                    display: flex;
+                    justify-content: space-around;
+                }
+                .move {
+                    text-align: center;
+                    padding: 10rpx;
+                    font-size: 22rpx;
+                }
+                .add {
+                    text-align: center;
+                    line-height: 200rpx;
+                    font-size: 150rpx;
+                    font-weight: 100;
+                    color: #ccc;
+                }
+            }
+        }
+    }
 }
